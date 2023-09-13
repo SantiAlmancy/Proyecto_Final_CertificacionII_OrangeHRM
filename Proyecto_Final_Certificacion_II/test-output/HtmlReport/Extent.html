@@ -40,6 +40,7 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 			<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
@@ -49,7 +50,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>sept 13, 2023 12:59:09 a. m.</span>
+			<span class='label blue darken-3 suite-start-time'>sept 13, 2023 02:28:20 p. m.</span>
 			</a>
 		</ul>
 	</div>
@@ -64,7 +65,7 @@
 				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+										<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -118,12 +119,12 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='$100%'>
-                    <span class='strong'>1</span> features passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='$0%'>
+                    <span class='strong'>0</span> features passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> features failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
+                    1</span> features failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped
                 </div>
@@ -136,12 +137,12 @@
                     <canvas id='child-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
+                    <span class='tooltipped' data-position='top' data-tooltip='25%'>
                     <span class='strong'>1</span> scenarios passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> scenarios failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='75%'>
+                    3</span> scenarios failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -156,14 +157,14 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>10</span> steps passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='27%'>
+                    <span class='strong'>20</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> steps failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='4%'>
+                    3</span> steps failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='68%'>
+                    49</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> others
                 </div>
@@ -184,11 +185,11 @@
 	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Creation of a new user</span>
-						<span class='test-time'>sept 13, 2023 12:59:09 a. m.</span>
-						<span class='test-status right pass'>Pass</span>
+						<span class='test-time'>sept 13, 2023 02:28:20 p. m.</span>
+						<span class='test-status right fail'>Fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class="sr-filters bdd-filters">
@@ -198,68 +199,476 @@
 	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
 </div>
 
-<div class='scenario node' test-id='2' status='pass'>
+<div class='scenario outline node' test-id='2' status='fail'>
 
-	<span class='duration right label'>00 00 26.030</span>
+	<span class='duration right label'>00 01 37.324</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Create a new user</div>
+		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario Outline: Create a new user</div>
 	</div>
 	
+		<div class='node-desc'><br><br><table class='markup-table table '><tr><td>role</td><td>employee</td><td>status</td></tr><tr><td>Admin</td><td>A</td><td>Enabled</td></tr><tr><td>ESS</td><td>B</td><td>Disabled</td></tr><tr><td>Admin</td><td>C</td><td>Disabled</td></tr><tr><td>ESS</td><td>D</td><td>Enabled</td></tr></table></div>
 	
-		<div class='category-list'>
-				<span class='category label'>@createNewUser</span>
-		</div>
 	
 	<ul class='steps'>
-		<li test-id='3' class='node given Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.CommonSteps.goToOrangeHRMPage())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am in Orange HRM web page</div>
+		<li test-id='3' class='node scenario Fail' status='Fail'>
+			<div class="step-name" title="()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Create a new user</div>
 
+				<div class='category-list'>
+						<span class='category label'>@createNewUser</span>
+				</div>
 
+			<ul class='gc steps'>
+				<li test-id='4' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.CommonSteps.goToOrangeHRMPage()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am in Orange HRM web page</h6>
+
+				</li>
+				<li test-id='5' class='gc given Fail' status='Fail'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setUserName(java.lang.String)"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Given I set the user name field with "Admin"</h6>
+
+							<textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name='username']"}
+  (Session info: chrome=116.0.5845.182)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.sendKeys(Unknown Source)
+	at pages.LoginPage.setUserNameTextBox(LoginPage.java:34)
+	at stepDefinitions.LoginSteps.setUserName(LoginSteps.java:17)
+	at ✽.I set the user name field with "Admin"(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:8)
+</textarea>
+				</li>
+				<li test-id='6' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setPassword(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password field with "admin123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='7' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.clickOnLoginButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the login button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='8' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.DashboardSteps.verifyDashBoardIsDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Home Page</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='9' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAdminButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the admin button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='10' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isAdminPageDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Admin Page</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='11' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnManagementButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the User Management button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='12' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnUsersButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I click on the User button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='13' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isSystemUsersDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in System Users</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='14' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAddUserButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the new user button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='15' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isNewUserFormDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in New User form</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='16' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setUserNameInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I set the username in form field with "UserName123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='17' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='18' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRepeatedPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the repeated password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='19' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRoleInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set de role in form with "Admin"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='20' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setStatusInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the status in form with "Enabled"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='21' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setEmployeeName(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the employee whose name starts with "A"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+			</ul>
 		</li>
-		<li test-id='4' class='node given Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LoginSteps.setUserName(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I set the user name field with "Admin"</div>
+		<li test-id='22' class='node scenario Pass' status='Pass'>
+			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Create a new user</div>
 
+				<div class='category-list'>
+						<span class='category label'>@createNewUser</span>
+				</div>
 
+			<ul class='gc steps'>
+				<li test-id='23' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.CommonSteps.goToOrangeHRMPage()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am in Orange HRM web page</h6>
+
+				</li>
+				<li test-id='24' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setUserName(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I set the user name field with "Admin"</h6>
+
+				</li>
+				<li test-id='25' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setPassword(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the password field with "admin123"</h6>
+
+				</li>
+				<li test-id='26' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.clickOnLoginButton()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the login button</h6>
+
+				</li>
+				<li test-id='27' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.DashboardSteps.verifyDashBoardIsDisplayed()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in the Home Page</h6>
+
+				</li>
+				<li test-id='28' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAdminButton()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the admin button</h6>
+
+				</li>
+				<li test-id='29' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isAdminPageDisplayed()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in the Admin Page</h6>
+
+				</li>
+				<li test-id='30' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnManagementButton()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the User Management button</h6>
+
+				</li>
+				<li test-id='31' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnUsersButton()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I click on the User button</h6>
+
+				</li>
+				<li test-id='32' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isSystemUsersDisplayed()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in System Users</h6>
+
+				</li>
+				<li test-id='33' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAddUserButton()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the new user button</h6>
+
+				</li>
+				<li test-id='34' class='gc then Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isNewUserFormDisplayed()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in New User form</h6>
+
+				</li>
+				<li test-id='35' class='gc when Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setUserNameInForm(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I set the username in form field with "UserName123"</h6>
+
+				</li>
+				<li test-id='36' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setPasswordInForm(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the password in form field with "Pass123"</h6>
+
+				</li>
+				<li test-id='37' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRepeatedPasswordInForm(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the repeated password in form field with "Pass123"</h6>
+
+				</li>
+				<li test-id='38' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRoleInForm(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set de role in form with "ESS"</h6>
+
+				</li>
+				<li test-id='39' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setStatusInForm(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the status in form with "Disabled"</h6>
+
+				</li>
+				<li test-id='40' class='gc and Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setEmployeeName(java.lang.String)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the employee whose name starts with "B"</h6>
+
+				</li>
+			</ul>
 		</li>
-		<li test-id='5' class='node and Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LoginSteps.setPassword(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I set the password field with "admin123"</div>
+		<li test-id='41' class='node scenario Fail' status='Fail'>
+			<div class="step-name" title="()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Create a new user</div>
 
+				<div class='category-list'>
+						<span class='category label'>@createNewUser</span>
+				</div>
 
+			<ul class='gc steps'>
+				<li test-id='42' class='gc given Pass' status='Pass'>
+					<h6 class="step-name" title="stepDefinitions.CommonSteps.goToOrangeHRMPage()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given I am in Orange HRM web page</h6>
+
+				</li>
+				<li test-id='43' class='gc given Fail' status='Fail'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setUserName(java.lang.String)"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Given I set the user name field with "Admin"</h6>
+
+							<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: disconnected: unable to send message to renderer
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=116.0.5845.182)
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.sendKeys(Unknown Source)
+	at pages.LoginPage.setUserNameTextBox(LoginPage.java:34)
+	at stepDefinitions.LoginSteps.setUserName(LoginSteps.java:17)
+	at ✽.I set the user name field with "Admin"(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:8)
+</textarea>
+				</li>
+				<li test-id='44' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setPassword(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password field with "admin123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='45' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.clickOnLoginButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the login button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='46' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.DashboardSteps.verifyDashBoardIsDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Home Page</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='47' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAdminButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the admin button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='48' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isAdminPageDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Admin Page</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='49' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnManagementButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the User Management button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='50' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnUsersButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I click on the User button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='51' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isSystemUsersDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in System Users</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='52' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAddUserButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the new user button</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='53' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isNewUserFormDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in New User form</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='54' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setUserNameInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I set the username in form field with "UserName123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='55' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='56' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRepeatedPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the repeated password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='57' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRoleInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set de role in form with "Admin"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='58' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setStatusInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the status in form with "Disabled"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='59' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setEmployeeName(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the employee whose name starts with "C"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+			</ul>
 		</li>
-		<li test-id='6' class='node when Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LoginSteps.clickOnLoginButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the login button</div>
+		<li test-id='60' class='node scenario Fail' status='Fail'>
+			<div class="step-name" title="()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Create a new user</div>
 
+				<div class='category-list'>
+						<span class='category label'>@createNewUser</span>
+				</div>
 
-		</li>
-		<li test-id='7' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.DashboardSteps.verifyDashBoardIsDisplayed())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in the Home Page</div>
+			<ul class='gc steps'>
+				<li test-id='61' class='gc given Fail' status='Fail'>
+					<h6 class="step-name" title="stepDefinitions.CommonSteps.goToOrangeHRMPage()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Given I am in Orange HRM web page</h6>
 
+							<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=116.0.5845.182)
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, get {url=https://opensource-demo.orangehrmlive.com/web/index.php}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:300)
+	at stepDefinitions.CommonSteps.goToOrangeHRMPage(CommonSteps.java:10)
+	at ✽.I am in Orange HRM web page(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:4)
+</textarea>
+				</li>
+				<li test-id='62' class='gc given Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setUserName(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Given I set the user name field with "Admin"</h6>
 
-		</li>
-		<li test-id='8' class='node when Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.AdminSteps.clickOnAdminButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the admin button</div>
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='63' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.setPassword(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password field with "admin123"</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='64' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.LoginSteps.clickOnLoginButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the login button</h6>
 
-		</li>
-		<li test-id='9' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.AdminSteps.isAdminPageDisplayed())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in the Admin Page</div>
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='65' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.DashboardSteps.verifyDashBoardIsDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Home Page</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='66' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAdminButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the admin button</h6>
 
-		</li>
-		<li test-id='10' class='node when Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.AdminSteps.clickOnManagementButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When I click on the User Management button</div>
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='67' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isAdminPageDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in the Admin Page</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='68' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnManagementButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the User Management button</h6>
 
-		</li>
-		<li test-id='11' class='node and Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.AdminSteps.clickOnUsersButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And I click on the User button</div>
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='69' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnUsersButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I click on the User button</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='70' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isSystemUsersDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in System Users</h6>
 
-		</li>
-		<li test-id='12' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.AdminSteps.isSystemUsersDisplayed())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then I must be in System Users</div>
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='71' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.clickOnAddUserButton()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I click on the new user button</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='72' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.isNewUserFormDisplayed()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then I must be in New User form</h6>
 
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='73' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setUserNameInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When I set the username in form field with "UserName123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='74' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='75' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRepeatedPasswordInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the repeated password in form field with "Pass123"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='76' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setRoleInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set de role in form with "ESS"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='77' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setStatusInForm(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the status in form with "Enabled"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='78' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="stepDefinitions.AdminSteps.setEmployeeName(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And I set the employee whose name starts with "D"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+			</ul>
 		</li>
 	</ul>
 </div>
@@ -310,12 +719,13 @@
 						<span class='category-name'>@createNewUser</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
+						<span class='label fail'>3</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
 							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
-							
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 3</span>
 							
 						</div>
 						<div class='category-tests'>
@@ -329,9 +739,24 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>sept 13, 2023 12:59:09 a. m.</td>
-										<td class='linked' test-id='2'>Create a new user</td>
+										<td>sept 13, 2023 02:28:20 p. m.</td>
+										<td class='linked' test-id='3'>Create a new user</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>sept 13, 2023 02:29:34 p. m.</td>
+										<td class='linked' test-id='22'>Create a new user</td>
 										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>sept 13, 2023 02:29:54 p. m.</td>
+										<td class='linked' test-id='41'>Create a new user</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>sept 13, 2023 02:29:58 p. m.</td>
+										<td class='linked' test-id='60'>Create a new user</td>
+										<td><span class='test-status Fail'>Fail</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -347,7 +772,184 @@
 		</div>
 	</div>
 </div>
-<!-- category view --><div id='dashboard-view' class='view hide'>
+<!-- category view --><div id='exception-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='exception-collection' class='exception-collection'>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.openqa.selenium.NoSuchElementException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>StackTrace</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>sept 13, 2023 02:29:23 p. m.</td>
+										<td class='linked' test-id='5'>Given I set the user name field with "Admin"</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name='username']"}
+  (Session info: chrome=116.0.5845.182)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.sendKeys(Unknown Source)
+	at pages.LoginPage.setUserNameTextBox(LoginPage.java:34)
+	at stepDefinitions.LoginSteps.setUserName(LoginSteps.java:17)
+	at ✽.I set the user name field with "Admin"(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:8)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.openqa.selenium.WebDriverException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>StackTrace</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>sept 13, 2023 02:29:55 p. m.</td>
+										<td class='linked' test-id='43'>Given I set the user name field with "Admin"</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: disconnected: unable to send message to renderer
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=116.0.5845.182)
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.sendKeys(Unknown Source)
+	at pages.LoginPage.setUserNameTextBox(LoginPage.java:34)
+	at stepDefinitions.LoginSteps.setUserName(LoginSteps.java:17)
+	at ✽.I set the user name field with "Admin"(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:8)
+</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>sept 13, 2023 02:29:58 p. m.</td>
+										<td class='linked' test-id='61'>Given I am in Orange HRM web page</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: disconnected: unable to send message to renderer
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=116.0.5845.182)
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c2d6f42ad63fa5c677cdf9f650ddfb1c, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.182, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\PC\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53390}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53390/devtoo..., se:cdpVersion: 116.0.5845.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c2d6f42ad63fa5c677cdf9f650ddfb1c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.sendKeys(Unknown Source)
+	at pages.LoginPage.setUserNameTextBox(LoginPage.java:34)
+	at stepDefinitions.LoginSteps.setUserName(LoginSteps.java:17)
+	at ✽.I set the user name field with "Admin"(file:///C:/Users/PC/Documents/Proyecto%20Final%20Certificacion%20II/Proyecto_Final_Certificacion_II/src/test/resources/Admin.feature:8)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='exception-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -361,31 +963,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Scenarios
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>4</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>10</div>
+					<div class='panel-lead'>72</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>sept 13, 2023 12:59:09 a. m.</div>
+					<div class='panel-lead'>sept 13, 2023 02:28:20 p. m.</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>sept 13, 2023 12:59:35 a. m.</div>
+			 		<div class='panel-lead'>sept 13, 2023 02:29:58 p. m.</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 26.456</div>
+					<div class='panel-lead'>00 01 37.693</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -403,10 +1005,10 @@
 						<tr>
 							<td>@createNewUser</td>
 							<td>1</td>
-							<td>0</td>
+							<td>3</td>
 							<td>0</td>
 							<td>
-									100%
+									25%
 							</td>
 						</tr>
 					</table>
@@ -421,34 +1023,34 @@
 		<script>
 			var statusGroup = {
                 parentCount: 1,
-				passParent: 1,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				childCount: 1,
+				childCount: 4,
 				passChild: 1,
-				failChild: 0,
+				failChild: 3,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 10,
-				passGrandChild: 10,
-				failGrandChild: 0,
+				grandChildCount: 72,
+				passGrandChild: 20,
+				failGrandChild: 3,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 0,
+				skipGrandChild: 49,
 				infoGrandChild: 0,
 			};
 			</script>
 		
 		<script>
 			var timeline = {
-			        "Creation of a new user":26.033
+			        "Creation of a new user":97.326
 			};
 		</script>
 		

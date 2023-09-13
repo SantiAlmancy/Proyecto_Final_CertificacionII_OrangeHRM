@@ -1,14 +1,13 @@
 package stepDefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.WebDriver;
 import pages.AdminPage;
 import utilities.DriverManager;
 
-import java.sql.Driver;
 
 public class AdminSteps
 {
@@ -51,5 +50,43 @@ public class AdminSteps
     {
         Assertions.assertTrue(adminPage.isNumberOfUsersVisible());
     }
+    @Then("I must be in New User form")
+    public void isNewUserFormDisplayed()
+    {
+        Assertions.assertTrue(adminPage.isAddUserTextVisible());
+    }
+    @When("I set the username in form field with {string}")
+    public void setUserNameInForm(String Username) throws InterruptedException {
+        adminPage.setUserNameTextBox(Username);
+        Thread.sleep(1000);
+    }
+    @And("I set the password in form field with {string}")
+    public void setPasswordInForm(String Password) throws InterruptedException {
+        adminPage.setPasswordTextBox(Password);
+        Thread.sleep(1000);
+    }
+    @And("I set the repeated password in form field with {string}")
+    public void setRepeatedPasswordInForm(String Password) throws InterruptedException {
+        adminPage.setRepeatedPasswordTextBox(Password);
+        Thread.sleep(1000);
+    }
+    @And("I set de role in form with {string}")
+    public void setRoleInForm(String role) throws InterruptedException {
+        adminPage.selectUserRole(role);
+        Thread.sleep(1000);
+    }
+
+    @And("I set the status in form with {string}")
+    public void setStatusInForm(String status) throws InterruptedException {
+        adminPage.selectStatus(status);
+        Thread.sleep(1000);
+    }
+    @And("I set the employee whose name starts with {string}")
+    public void setEmployeeName(String firstLetter) throws InterruptedException
+    {
+        adminPage.fillEmployee(firstLetter);
+        Thread.sleep(1000);
+    }
+
 }
 

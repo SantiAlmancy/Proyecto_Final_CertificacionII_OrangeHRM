@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,15 @@ public class AdminPage
     @FindBys({
             @FindBy(css = "li.oxd-main-menu-item-wrapper")
     })
-    private List<WebElement> adminButtons;
+    List<WebElement> adminButtons;
+    @FindBys({
+            @FindBy(css = "div[data-v-957b4417] input[data-v-1f99f73c]")
+    })
+    List<WebElement> textBoxesUserForm;
+    @FindBys({
+            @FindBy(css = "i[data-v-67d2aedf]")
+    })
+    List<WebElement> listDownButtons;
     @FindBy(css = "button[class='oxd-button oxd-button--medium oxd-button--secondary']")
     WebElement buttonAddUser;
     @FindBy(css = "li[class='oxd-topbar-body-nav-tab --parent --visited']")
@@ -23,6 +32,9 @@ public class AdminPage
     WebElement buttonUsers;
     @FindBy(css = "span[class='oxd-text oxd-text--span']")
     WebElement textNumberOfUsers;
+    @FindBy(css = "h6[class='oxd-text oxd-text--h6 orangehrm-main-title']")
+    WebElement textAddUser;
+
     public AdminPage(WebDriver driver)
     {
         this.driver = driver;
@@ -52,5 +64,69 @@ public class AdminPage
     public boolean isNumberOfUsersVisible()
     {
         return textNumberOfUsers.isDisplayed();
+    }
+    public boolean isAddUserTextVisible()
+    {
+        return textAddUser.isDisplayed();
+    }
+    public void setUserNameTextBox(String Username)
+    {
+        WebElement usernameTextBox = textBoxesUserForm.get(0);
+        usernameTextBox.sendKeys(Username);
+    }
+
+    public void setPasswordTextBox(String Password)
+    {
+        WebElement passwordTextBox = textBoxesUserForm.get(1);
+        passwordTextBox.sendKeys(Password);
+    }
+    public void setRepeatedPasswordTextBox(String Password)
+    {
+        WebElement usernameTextBox = textBoxesUserForm.get(2);
+        usernameTextBox.sendKeys(Password);
+    }
+    public void selectUserRole(String role)
+    {
+        WebElement listDownButton = listDownButtons.get(0);
+        listDownButton.click();
+
+        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
+
+        if(role.equals("Admin"))
+        {
+            WebElement optionToClick = listBox.findElements(By.cssSelector("div[role='option']")).get(1);
+            optionToClick.click();
+        }
+        else if (role.equals("ESS"))
+        {
+            WebElement optionToClick = listBox.findElements(By.cssSelector("div[role='option']")).get(2);
+            optionToClick.click();
+        }
+    }
+    public void selectStatus(String status)
+    {
+        WebElement listDownButton = listDownButtons.get(1);
+        listDownButton.click();
+        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
+
+        if(status.equals("Enabled"))
+        {
+            WebElement optionToClick = listBox.findElements(By.cssSelector("div[role='option']")).get(1);
+            optionToClick.click();
+        }
+        else if (status.equals("Disabled"))
+        {
+            WebElement optionToClick = listBox.findElements(By.cssSelector("div[role='option']")).get(2);
+            optionToClick.click();
+        }
+    }
+
+    public void fillEmployee(String x) throws InterruptedException {
+        WebElement autocompleteWrapper = driver.findElement(By.cssSelector("div.oxd-autocomplete-wrapper"));
+        WebElement textBox = autocompleteWrapper.findElement(By.cssSelector("input[data-v-75e744cd]"));
+        textBox.sendKeys(x);
+        Thread.sleep(3000);
+        WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
+        firstOption.click();
     }
 }
