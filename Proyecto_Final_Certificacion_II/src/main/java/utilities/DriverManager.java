@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
     private static DriverManager instance;
@@ -16,10 +16,10 @@ public class DriverManager {
     {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36");
+        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.1234.567 Safari/537.36");
         driver = new ChromeDriver(options);
         driver.manage().deleteAllCookies();
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public static DriverManager getDriver()

@@ -14,6 +14,8 @@ import java.time.Duration;
 public class DashboardPage
 {
     WebDriver driver;
+    @FindBy(className = "oxd-userdropdown-tab")
+    WebElement dropDownUser;
     public DashboardPage(WebDriver driver)
     {
         this.driver = driver;
@@ -22,8 +24,8 @@ public class DashboardPage
 
     public boolean isDropDownUserVisible()
     {
-        WebElement dropDownUser = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.className("oxd-userdropdown-tab")));
+        //WebElement dropDownUser = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+              //  .until(ExpectedConditions.elementToBeClickable(By.className("oxd-userdropdown-tab")));
         return dropDownUser.isDisplayed();
     }
 }

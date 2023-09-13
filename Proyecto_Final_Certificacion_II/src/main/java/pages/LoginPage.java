@@ -14,6 +14,12 @@ import java.time.Duration;
 public class LoginPage
 {
     WebDriver driver;
+    @FindBy(name = "username")
+    WebElement userNameTextBox;
+    @FindBy(name = "password")
+    WebElement passwordTextBox;
+    @FindBy(css = "button[class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")
+    WebElement loginButton;
     public LoginPage(WebDriver driver)
     {
         this.driver = driver;
@@ -23,20 +29,20 @@ public class LoginPage
     public void setUserNameTextBox(String userName)
     {
 
-        WebElement userNameTextBox = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.name("username")));
+        //WebElement userNameTextBox = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+          //      .until(ExpectedConditions.elementToBeClickable(By.name("username")));
         userNameTextBox.sendKeys(userName);
     }
     public void setPasswordTextBox(String password)
     {
-        WebElement passwordTextBox = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.name("password")));
+        //WebElement passwordTextBox = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+          //      .until(ExpectedConditions.elementToBeClickable(By.name("password")));
         passwordTextBox.sendKeys(password);
     }
     public void clickOnLoginButton()
     {
-        WebElement loginButton = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")));
+        //WebElement loginButton = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+          //      .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")));
         loginButton.click();
     }
 
