@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
     private static DriverManager instance;
@@ -16,6 +17,7 @@ public class DriverManager {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     public static DriverManager getDriver()
