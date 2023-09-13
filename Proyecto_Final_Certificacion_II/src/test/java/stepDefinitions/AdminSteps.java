@@ -88,5 +88,18 @@ public class AdminSteps
         Thread.sleep(1000);
     }
 
+    @When("I click on the save button")
+    public void saveButtonClick() throws InterruptedException {
+        adminPage.clickButtonSave();
+        Thread.sleep(1000);
+    }
+
+    @Then("The user of username {string} from employee must be created")
+    public void isUserCreated(String user) throws InterruptedException
+    {
+        Assertions.assertTrue(adminPage.UserCreated(user));
+        Thread.sleep(1000);
+    }
+
 }
 

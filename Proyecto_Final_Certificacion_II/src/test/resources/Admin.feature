@@ -16,16 +16,18 @@ Feature: Creation of a new user
       Then I must be in System Users
       When I click on the new user button
       Then I must be in New User form
-      When I set the username in form field with "UserName123"
+      When I set the username in form field with "<username>"
       And I set the password in form field with "Pass123"
       And I set the repeated password in form field with "Pass123"
       And I set de role in form with "<role>"
       And I set the status in form with "<status>"
       And I set the employee whose name starts with "<employee>"
+      When I click on the save button
+      Then The user of username "<username>" from employee must be created
       Examples:
-        | role  | employee  |  status    |
-        | Admin | A         |  Enabled   |
-        | ESS   | B         |  Disabled  |
-        | Admin | C         |  Disabled  |
-        | ESS   | D         |  Enabled   |
+        | role  | employee  |  status    |  username  |
+        | Admin | A         |  Enabled   |  Admin1    |
+        | ESS   | B         |  Disabled  |  Admin2    |
+        | Admin | C         |  Disabled  |  Admin3    |
+        | ESS   | D         |  Enabled   |  Admin4    |
 

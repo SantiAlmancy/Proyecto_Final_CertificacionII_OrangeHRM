@@ -34,7 +34,8 @@ public class AdminPage
     WebElement textNumberOfUsers;
     @FindBy(css = "h6[class='oxd-text oxd-text--h6 orangehrm-main-title']")
     WebElement textAddUser;
-
+    @FindBy(css = "button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")
+    WebElement buttonSave;
     public AdminPage(WebDriver driver)
     {
         this.driver = driver;
@@ -128,5 +129,27 @@ public class AdminPage
         Thread.sleep(3000);
         WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
         firstOption.click();
+    }
+
+    public void clickButtonSave()
+    {
+        buttonSave.click();
+    }
+
+    public boolean UserCreated(String user)
+    {
+        List<WebElement> tableCards = driver.findElements(By.className("oxd-table-card"));
+
+        for (WebElement tableCard : tableCards) {
+            WebElement usernameElement = tableCard.findElement(By.xpath(".//div[@data-v-6c07a142]"));
+
+            String username = usernameElement.getText();
+
+            if (username.equals(user))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
