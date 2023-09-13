@@ -98,7 +98,6 @@ public class AdminSteps
     public void isUserCreated(String user) throws InterruptedException
     {
         Assertions.assertTrue(adminPage.UserCreated(user));
-        Thread.sleep(1000);
     }
 
 }
