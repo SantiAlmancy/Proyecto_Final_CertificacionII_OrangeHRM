@@ -200,8 +200,10 @@ public class ClaimPage
                 {
                     return true;
                 }
+                System.out.println(cell.getText().trim());
                 i ++;
             }
+            System.out.println("------------");
         }
         return false;
     }

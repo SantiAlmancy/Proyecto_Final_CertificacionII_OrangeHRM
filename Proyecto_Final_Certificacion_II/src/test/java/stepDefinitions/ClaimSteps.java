@@ -15,6 +15,7 @@ public class ClaimSteps
     ClaimPage claimPage = new ClaimPage(DriverManager.getDriver().driver);
     List<String> information = new ArrayList<>();
     String totalExpense = "";
+    String description = "";
     @When("I click on the claim button")
     public void clickOnClaimButton() throws InterruptedException
     {
@@ -57,6 +58,7 @@ public class ClaimSteps
     {
         claimPage.setRemarks(remark);
         Thread.sleep(1000);
+        description = remark;
     }
     @And("I click on the create claim button")
     public void clickOnCreateClaim() throws InterruptedException
@@ -138,11 +140,22 @@ public class ClaimSteps
         String[] valuesToMatch = {
                 information.get(1),
                 information.get(2),
+                description,
                 information.get(4),
                 formattedDate,
                 "Submitted",
                 totalExpense
         };
+
+        System.out.println(
+                information.get(1) + " " +
+                        information.get(2) + " " +
+                        description + " " +
+                        information.get(4) + " " +
+                        formattedDate + " " +
+                        "Submitted" + " " +
+                        totalExpense
+        );
 
         Assertions.assertTrue(claimPage.isClaimRecorded(valuesToMatch));
         Thread.sleep(1000);
