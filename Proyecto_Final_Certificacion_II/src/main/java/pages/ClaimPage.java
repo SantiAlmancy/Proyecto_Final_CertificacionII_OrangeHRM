@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class ClaimPage
     @FindBy(css= "button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")
     WebElement createButton;
     @FindBys({
-            @FindBy(css = "input[class='oxd-input oxd-input--active']")
+            @FindBy(css = ".oxd-input.oxd-input--active")
     })
     List<WebElement> claimInformation;
 
@@ -49,6 +48,8 @@ public class ClaimPage
     WebElement submitClaimButton;
     @FindBy(css = "div[class='oxd-date-input-link --today']")
     WebElement todayButton;
+    @FindBy(xpath = "//a[@class='oxd-topbar-body-nav-tab-item' and text()='My Claims']")
+    WebElement myClaimsButton;
 
     public ClaimPage(WebDriver driver)
     {
@@ -116,12 +117,13 @@ public class ClaimPage
     {
         return submitClaimButton.isDisplayed();
     }
-    public List<String> getIdOfClaim()
+    public List<String> getInformationOfClaim()
     {
         List<String> info = new ArrayList<>();
         for ( WebElement element : claimInformation)
         {
-            info.add(element.getText());
+            String inputValue = element.getAttribute("value");
+            info.add(inputValue);
         }
         return info;
     }
@@ -174,5 +176,38 @@ public class ClaimPage
     public void clickOnSubmitClaimButton()
     {
         submitClaimButton.click();
+    }
+    public String getTotalExpense()
+    {
+        WebElement paragraphElement = driver.findElement(By.cssSelector("p[data-v-7b563373][data-v-0faf90dd]"));
+        String paragraphText = paragraphElement.getText();
+        return paragraphText.replaceAll("[^0-9.]+", "");
+    }
+    public boolean isClaimRecorded(String[] valuesToMatch)
+    {
+        List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-0d5ef602]"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.cssSelector(".oxd-table-cell"));
+            int i = 0;
+            for (WebElement cell : cells)
+            {
+                String value = cell.getText().trim();
+                if (i != 2 && !value.equals(valuesToMatch[i]))
+                {
+                    break;
+                }
+                if (i == 6)
+                {
+                    return true;
+                }
+                i ++;
+            }
+        }
+        return false;
+    }
+
+    public void clickOnMyClaims()
+    {
+        myClaimsButton.click();
     }
 }

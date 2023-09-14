@@ -1,18 +1,20 @@
 package stepDefinitions;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
-import pages.AdminPage;
 import pages.ClaimPage;
 import utilities.DriverManager;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClaimSteps
 {
     ClaimPage claimPage = new ClaimPage(DriverManager.getDriver().driver);
+    List<String> information = new ArrayList<>();
+    String totalExpense = "";
     @When("I click on the claim button")
     public void clickOnClaimButton() throws InterruptedException
     {
@@ -110,7 +112,7 @@ public class ClaimSteps
     @And("I click on submit claim")
     public void clickOnSubmitClaim() throws InterruptedException
     {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         claimPage.clickOnSubmitClaimButton();
         Thread.sleep(1000);
     }
@@ -120,4 +122,36 @@ public class ClaimSteps
         claimPage.clickOnCalendarIcon();
     }
 
+    @When("I save my claim information and total expense")
+    public void infoOfClaim() throws InterruptedException {
+        Thread.sleep(1000);
+        information = claimPage.getInformationOfClaim();
+        totalExpense = claimPage.getTotalExpense();
+    }
+
+    @Then("The claim information and total expense must be correct")
+    public void isClaimInformationCorrect() throws InterruptedException {
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = dateFormat.format(currentDate);
+
+        String[] valuesToMatch = {
+                information.get(1),
+                information.get(2),
+                information.get(4),
+                formattedDate,
+                "Submitted",
+                totalExpense
+        };
+
+        Assertions.assertTrue(claimPage.isClaimRecorded(valuesToMatch));
+        Thread.sleep(1000);
+    }
+
+    @And("I click on my claims button")
+    public void clickOnMyClaimsButton() throws InterruptedException
+    {
+        claimPage.clickOnMyClaims();
+        Thread.sleep(1000);
+    }
 }
