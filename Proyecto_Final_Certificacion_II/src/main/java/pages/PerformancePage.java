@@ -43,6 +43,10 @@ public class PerformancePage
     {
         buttonConfigure.click();
     }
+    public boolean isButtonConfigureDisplayed()
+    {
+        return buttonConfigure.isDisplayed();
+    }
     public void clickOnButtonKPIs()
     {
         buttonKPIs.click();
@@ -50,6 +54,10 @@ public class PerformancePage
     public void clickOnButtonAddKPI()
     {
         buttonAddKPI.click();
+    }
+    public boolean isButtonAddKPIDisplayed()
+    {
+        return buttonAddKPI.isDisplayed();
     }
     public void clickOnButtonDisplayJobTitle()
     {
@@ -104,7 +112,7 @@ public class PerformancePage
             for (WebElement cell : cells)
             {
                 String value = cell.getText().trim();
-                if (i != 2 && !value.equals(valuesToMatch[i]))
+                if (!value.equals(valuesToMatch[i]))
                 {
                     break;
                 }
