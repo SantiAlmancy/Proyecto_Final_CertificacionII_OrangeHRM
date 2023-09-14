@@ -96,11 +96,12 @@ public class RecruitmentPage
     {
         textBoxDescription.sendKeys(description);
     }
-    public void setHiringManager(String manager)
+    public String setHiringManager(String manager)
     {
         textBoxDescription.sendKeys(manager);
         WebElement firstOption = textBoxDescription.findElement(By.cssSelector("div.oxd-autocomplete-option"));
         firstOption.click();
+        return firstOption.getText();
     }
     public void clickOnToggleButtonActive()
     {
@@ -114,7 +115,7 @@ public class RecruitmentPage
     {
         buttonSubmitVacancy.click();
     }
-    public boolean isKPIRecorded(String[] valuesToMatch)
+    public boolean isVacancyRecorded(String[] valuesToMatch)
     {
         List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-f2168256]"));
         for (WebElement row : rows) {
