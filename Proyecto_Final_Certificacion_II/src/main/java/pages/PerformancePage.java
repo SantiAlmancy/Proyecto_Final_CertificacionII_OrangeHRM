@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ import java.util.List;
 public class PerformancePage
 {
     WebDriver driver;
-    @FindBy(css = "a[href='/web/index.php/claim/viewClaimModule']")
+    @FindBy(css = "a[href='/web/index.php/performance/viewPerformanceModule']")
     WebElement buttonPerformance;
     @FindBy(css = "li[class='oxd-topbar-body-nav-tab --parent']")
     WebElement buttonConfigure;
@@ -25,7 +26,7 @@ public class PerformancePage
     @FindBy(css = "button[type='submit']")
     WebElement buttonSaveKPI;
     @FindBys({
-            @FindBy(css = "input[class='oxd-input oxd-input--active']")
+            @FindBy(css = "input[autcomplete='off']")
     })
     List<WebElement> textBoxesForm;
     @FindBy(className = "oxd-select-text--after")
@@ -73,15 +74,21 @@ public class PerformancePage
     }
     public void setKPI(String indicator)
     {
-        textBoxesForm.get(1).sendKeys(indicator);
+        textBoxesForm.get(0).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        textBoxesForm.get(0).sendKeys(Keys.DELETE);
+        textBoxesForm.get(0).sendKeys(indicator);
     }
     public void setMinimumRating(String rating)
     {
-        textBoxesForm.get(2).sendKeys(rating);
+        textBoxesForm.get(1).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        textBoxesForm.get(1).sendKeys(Keys.DELETE);
+        textBoxesForm.get(1).sendKeys(rating);
     }
     public void setMaximumRating(String rating)
     {
-        textBoxesForm.get(3).sendKeys(rating);
+        textBoxesForm.get(2).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        textBoxesForm.get(2).sendKeys(Keys.DELETE);
+        textBoxesForm.get(2).sendKeys(rating);
     }
 
     public void selectJobTitle(String job)
@@ -108,6 +115,7 @@ public class PerformancePage
         List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-f2168256]"));
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.cssSelector(".oxd-table-cell"));
+            cells.remove(0);
             int i = 0;
             for (WebElement cell : cells)
             {
@@ -123,7 +131,6 @@ public class PerformancePage
                 System.out.println(cell.getText().trim());
                 i ++;
             }
-            System.out.println("------------");
         }
         return false;
     }
