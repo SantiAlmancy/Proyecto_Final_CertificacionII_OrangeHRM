@@ -92,12 +92,12 @@ public class PerformanceSteps
             Thread.sleep(1000);
         }
     }
-    @And("I click on the save KPI button 12")
+    @And("I click on the save KPI button")
     public void clickOnSaveKPIButton()
     {
         performancePage.clickOnButtonSaveKPI();
     }
-    @Then("The new created KPI must haven been recorded 13")
+    @Then("The new created KPI must haven been recorded")
     public void isKPIRecorded() throws InterruptedException
     {
         String[] valuesToMatch = {

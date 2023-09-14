@@ -21,8 +21,8 @@ Feature: Creation of a new key performance indicator
     And I click on the job title button
     Given I select the job title: "<job>"
     And I set the default scale: "<default>"
-    And I click on the save KPI button 12
-    Then The new created KPI must haven been recorded 13
+    And I click on the save KPI button
+    Then The new created KPI must haven been recorded
     Examples:
       | indicator             | minimum | maximum | job                     | default |
       | Sales Revenue         | 0       | 100     | Account Assistant       | no      |
