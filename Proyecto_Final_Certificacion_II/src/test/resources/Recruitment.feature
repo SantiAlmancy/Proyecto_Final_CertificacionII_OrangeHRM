@@ -23,7 +23,8 @@ Feature: Creation of a new vacancy
     And I set the active option: "<active>"
     And I set the Publish in RSS Feed and Web Page option: "<publish>"
     Given I click on the save vacancy button
-    And I click on the vacancies button
+    When I click on the recruitment button
+    When I click on the vacancies button
     Then The new created vacancy must have been recorded
     Examples:
       | vacancy                   | position | job                     | active  |  publish | manager | description                                                                                                           |

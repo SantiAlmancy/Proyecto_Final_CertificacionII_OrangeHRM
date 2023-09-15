@@ -15,11 +15,12 @@ public class RecruitmentSteps
     String Vacancy = "";
     String JobTitle = "";
     String HiringManager = "";
-    String Status = "";
+    String Status = "Active";
     @When("I click on the recruitment button")
-    public void clickOnRecruitmentButton()
+    public void clickOnRecruitmentButton() throws InterruptedException
     {
         recruitmentPage.clickOnButtonRecruitment();
+        Thread.sleep(1000);
     }
     @Then("I must be in the recruitment page")
     public void isRecruitmentPageDisplayed()
@@ -27,9 +28,10 @@ public class RecruitmentSteps
         Assertions.assertTrue(recruitmentPage.isButtonVacanciesDisplayed());
     }
     @When("I click on the vacancies button")
-    public void clickOnVacanciesButton()
+    public void clickOnVacanciesButton() throws InterruptedException
     {
         recruitmentPage.clickOnButtonVacancies();
+        Thread.sleep(1000);
     }
     @Then("I must be in the vacancies page")
     public void isVacanciesPageDisplayed()
@@ -42,15 +44,17 @@ public class RecruitmentSteps
         recruitmentPage.clickOnButtonAddVacancy();
     }
     @And("I set the vacancy name as {string}")
-    public void setVacancyName(String name)
+    public void setVacancyName(String name) throws InterruptedException
     {
         recruitmentPage.setVacancyName(name);
         Vacancy = name;
+        Thread.sleep(1000);
     }
     @And("I set the number of positions as {string}")
-    public void setPositionsNumber(String number)
+    public void setPositionsNumber(String number) throws InterruptedException
     {
         recruitmentPage.setNumberOfPositions(number);
+        Thread.sleep(1000);
     }
     @And("I click on the job title for vacancy button")
     public void clickOnJobTitleVacancyButton()
@@ -58,46 +62,52 @@ public class RecruitmentSteps
         recruitmentPage.clickOnButtonDisplayJobTitle();
     }
     @And("I select the job title for vacancy: {string}")
-    public void setJobTitleForVacancy(String job)
+    public void setJobTitleForVacancy(String job) throws InterruptedException
     {
         recruitmentPage.selectJobTitle(job);
         JobTitle = job;
+        Thread.sleep(1000);
     }
     @And("I set the description for the vacancy as {string}")
-    public void setDescriptionForVacancy(String description)
+    public void setDescriptionForVacancy(String description) throws InterruptedException
     {
         recruitmentPage.setDescriptionTextBox(description);
+        Thread.sleep(1000);
     }
     @And("I set the hiring manager in form field as {string}")
-    public void setHiringManager(String name)
+    public void setHiringManager(String name) throws InterruptedException
     {
         HiringManager = recruitmentPage.setHiringManager(name);
+        Thread.sleep(1000);
     }
     @And("I set the active option: {string}")
-    public void setActiveOption(String option)
+    public void setActiveOption(String option) throws InterruptedException
     {
-        if(option.equals("yes"))
+        if(option.equals("no"))
         {
             recruitmentPage.clickOnToggleButtonActive();
-            Status = "Active";
+            Status = "Closed";
         }
+        Thread.sleep(1000);
     }
     @And("I set the Publish in RSS Feed and Web Page option: {string}")
-    public void setPublishOption(String option)
+    public void setPublishOption(String option) throws InterruptedException
     {
-        if(option.equals("yes"))
+        if(option.equals("no"))
         {
             recruitmentPage.clickOnToggleButtonPublish();
         }
+        Thread.sleep(1000);
     }
     @Given("I click on the save vacancy button")
-    public void clickOnSaveButton()
-    {
+    public void clickOnSaveButton() throws InterruptedException {
         recruitmentPage.clickOnButtonSubmitVacancy();
+        Thread.sleep(1000);
     }
     @Then("The new created vacancy must have been recorded")
-    public void isKPIRecorded()
+    public void isVacancyRecorded() throws InterruptedException
     {
+        Thread.sleep(2000);
         String[] valuesToMatch = {
                 Vacancy,
                 JobTitle,
@@ -105,5 +115,6 @@ public class RecruitmentSteps
                 Status
         };
         Assertions.assertTrue(recruitmentPage.isVacancyRecorded(valuesToMatch));
+        Thread.sleep(1000);
     }
 }

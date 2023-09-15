@@ -16,12 +16,12 @@ public class RecruitmentPage
     WebElement buttonRecruitment;
     @FindBy(css = "li[class='oxd-topbar-body-nav-tab']")
     WebElement buttonVacancies;
-    @FindBy(css = "h5[class=oxd-text oxd-text--h5 oxd-table-filter-title]")
+    @FindBy(className = "oxd-table-filter-header")
     WebElement titlePageVacancies;
     @FindBy(css = "button[class='oxd-button oxd-button--medium oxd-button--secondary']")
     WebElement buttonAddVacancies;
     @FindBys({
-            @FindBy(css = "input[class='oxd-input oxd-input--active']")
+            @FindBy(css = "input[data-v-1f99f73c='']")
     })
     List<WebElement> textBoxesForm;
     @FindBy(className = "oxd-select-text--after")
@@ -48,7 +48,7 @@ public class RecruitmentPage
     }
     public boolean isButtonVacanciesDisplayed()
     {
-        return (buttonVacancies.isDisplayed() && buttonRecruitment.getText().equals("Vacancies"));
+        return (buttonVacancies.isDisplayed() && buttonVacancies.getText().equals("Vacancies"));
     }
     public void clickOnButtonVacancies()
     {
@@ -96,12 +96,15 @@ public class RecruitmentPage
     {
         textBoxDescription.sendKeys(description);
     }
-    public String setHiringManager(String manager)
-    {
-        textBoxDescription.sendKeys(manager);
-        WebElement firstOption = textBoxDescription.findElement(By.cssSelector("div.oxd-autocomplete-option"));
+    public String setHiringManager(String manager) throws InterruptedException {
+        WebElement autocompleteWrapper = driver.findElement(By.cssSelector("div.oxd-autocomplete-wrapper"));
+        WebElement textBox = autocompleteWrapper.findElement(By.cssSelector("input[data-v-75e744cd]"));
+        textBox.sendKeys(manager);
+        Thread.sleep(3000);
+        WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
+        String managerName = firstOption.getText();
         firstOption.click();
-        return firstOption.getText();
+        return managerName;
     }
     public void clickOnToggleButtonActive()
     {
@@ -109,7 +112,7 @@ public class RecruitmentPage
     }
     public void clickOnToggleButtonPublish()
     {
-        toggleButtons.get(1).click();
+        toggleButtons.get(toggleButtons.size() - 1).click();
     }
     public void clickOnButtonSubmitVacancy()
     {
@@ -124,6 +127,7 @@ public class RecruitmentPage
             int i = 0;
             for (WebElement cell : cells)
             {
+                System.out.println(cell.getText().trim());
                 String value = cell.getText().trim();
                 if (!value.equals(valuesToMatch[i]))
                 {
