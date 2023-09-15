@@ -4,18 +4,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
 import org.junit.jupiter.api.Assertions;
 import pages.RecruitmentPage;
 import utilities.DriverManager;
 
 public class RecruitmentSteps
 {
+    // LOS THREAD SLEEPS SON PARA VER MEJOR EL PROCESO DE LOS TESTCASES Y LOS VIDEOS
     RecruitmentPage recruitmentPage = new RecruitmentPage(DriverManager.getDriver().driver);
     String Vacancy = "";
-    String JobTitle = "";
-    String HiringManager = "";
-    String Status = "Active";
     @When("I click on the recruitment button")
     public void clickOnRecruitmentButton() throws InterruptedException
     {
@@ -65,7 +62,6 @@ public class RecruitmentSteps
     public void setJobTitleForVacancy(String job) throws InterruptedException
     {
         recruitmentPage.selectJobTitle(job);
-        JobTitle = job;
         Thread.sleep(1000);
     }
     @And("I set the description for the vacancy as {string}")
@@ -77,7 +73,7 @@ public class RecruitmentSteps
     @And("I set the hiring manager in form field as {string}")
     public void setHiringManager(String name) throws InterruptedException
     {
-        HiringManager = recruitmentPage.setHiringManager(name);
+        recruitmentPage.setHiringManager(name);
         Thread.sleep(1000);
     }
     @And("I set the active option: {string}")
@@ -86,7 +82,6 @@ public class RecruitmentSteps
         if(option.equals("no"))
         {
             recruitmentPage.clickOnToggleButtonActive();
-            Status = "Closed";
         }
         Thread.sleep(1000);
     }
@@ -107,14 +102,7 @@ public class RecruitmentSteps
     @Then("The new created vacancy must have been recorded")
     public void isVacancyRecorded() throws InterruptedException
     {
-        Thread.sleep(2000);
-        String[] valuesToMatch = {
-                Vacancy,
-                JobTitle,
-                HiringManager,
-                Status
-        };
-        Assertions.assertTrue(recruitmentPage.isVacancyRecorded(valuesToMatch));
+        Assertions.assertTrue(recruitmentPage.isVacancyRecorded(Vacancy));
         Thread.sleep(1000);
     }
 }

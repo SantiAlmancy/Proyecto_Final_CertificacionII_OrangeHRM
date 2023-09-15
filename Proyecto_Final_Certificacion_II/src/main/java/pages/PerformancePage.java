@@ -68,9 +68,9 @@ public class PerformancePage
     {
         buttonToggleDefaultScale.click();
     }
-    public void clickOnButtonSaveKPI()
-    {
+    public void clickOnButtonSaveKPI() throws InterruptedException {
         buttonSaveKPI.click();
+        Thread.sleep(1500); //Servidor necesita esperar para guardar información
     }
     public void setKPI(String indicator)
     {
@@ -91,8 +91,9 @@ public class PerformancePage
         textBoxesForm.get(2).sendKeys(rating);
     }
 
-    public void selectJobTitle(String job)
+    public void selectJobTitle(String job) throws InterruptedException
     {
+        Thread.sleep(2000); //Servidor necesita esperar para cargar información
         WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
 
         List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
@@ -110,8 +111,9 @@ public class PerformancePage
         }
     }
 
-    public boolean isKPIRecorded(String[] valuesToMatch)
+    public boolean isKPIRecorded(String[] valuesToMatch) throws InterruptedException
     {
+        Thread.sleep(3000); //Servidor necesita esperar para cargar información
         List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-f2168256]"));
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.cssSelector(".oxd-table-cell"));
@@ -124,11 +126,10 @@ public class PerformancePage
                 {
                     break;
                 }
-                if (i == 4)
+                if (i == 3)
                 {
                     return true;
                 }
-                System.out.println(cell.getText().trim());
                 i ++;
             }
         }

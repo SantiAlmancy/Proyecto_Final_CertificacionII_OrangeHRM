@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -122,22 +123,41 @@ public class AdminPage
         }
     }
 
-    public void fillEmployee(String x) throws InterruptedException {
-        WebElement autocompleteWrapper = driver.findElement(By.cssSelector("div.oxd-autocomplete-wrapper"));
-        WebElement textBox = autocompleteWrapper.findElement(By.cssSelector("input[data-v-75e744cd]"));
-        textBox.sendKeys(x);
-        Thread.sleep(3000);
-        WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
-        firstOption.click();
+    public void fillEmployeeWithRetry(String x)
+    {
+        retryAction(() -> {
+            try {
+                WebElement autocompleteWrapper = driver.findElement(By.cssSelector("div.oxd-autocomplete-wrapper"));
+                WebElement textBox = autocompleteWrapper.findElement(By.cssSelector("input[data-v-75e744cd]"));
+                textBox.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+                textBox.sendKeys(Keys.DELETE);
+                textBox.sendKeys(x);
+                Thread.sleep(2000); //Servidor necesita esperar para cargar información
+                WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
+                clickElementWithRetry(firstOption, 10);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }, 10);
     }
-
+    private void clickElementWithRetry(WebElement element, int maxRetries)
+    {
+        for (int i = 0; i < maxRetries; i++) {
+            try {
+                element.click();
+                return;
+            } catch (Exception e) {
+                // ERROR
+            }
+        }
+        throw new RuntimeException("ERROR.");
+    }
     public void clickButtonSave()
     {
         buttonSave.click();
     }
-
-    public boolean UserCreated(String user)
-    {
+    public boolean UserCreated(String user) throws InterruptedException {
+        Thread.sleep(2000); //Servidor necesita esperar para cargar información
         List<WebElement> tableCards = driver.findElements(By.className("oxd-table-card"));
 
         for (WebElement tableCard : tableCards) {
@@ -151,5 +171,21 @@ public class AdminPage
             }
         }
         return false;
+    }
+    // ACTIONS WITH RETRY AS THE PAGE IS REALLY SLOW AND BUGGY
+    private void retryAction(Runnable action, int maxRetries)
+    {
+        for (int retry = 0; retry < maxRetries; retry++)
+        {
+            try
+            {
+                action.run();
+                return;
+            } catch (Exception e)
+            {
+                // ERROR
+            }
+        }
+        throw new RuntimeException("ERROR.");
     }
 }

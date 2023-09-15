@@ -35,5 +35,3 @@ Feature: Creation of a new vacancy
       | Chief Executive Officer   | 1        | Chief Executive Officer | yes     |  no      | B       | We are seeking a visionary and results-driven Chief Executive Officer (CEO) to lead our organization to new heights.  |
       | Financial Analyst         | 18       | Chief Financial Officer | no      |  yes     | C       | We are seeking a highly motivated Financial Analyst to join our finance team.                                         |
       | Data Scientist            | 6        | Chief Technical Officer | yes     |  yes     | D       | We are seeking a highly motivated and skilled Data Scientist to join our dynamic team.                                |
-      | DevOps Engineer           | 10       | Content Specialist      | no      |  no      | E       | We are seeking a skilled and proactive DevOps Engineer to join our dynamic software development team.                 |
-

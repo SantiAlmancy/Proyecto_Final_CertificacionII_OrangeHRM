@@ -12,10 +12,11 @@ import java.util.List;
 
 public class ClaimSteps
 {
+    // LOS THREAD SLEEPS SON PARA VER MEJOR EL PROCESO DE LOS TESTCASES Y LOS VIDEOS
     ClaimPage claimPage = new ClaimPage(DriverManager.getDriver().driver);
     List<String> information = new ArrayList<>();
-    String totalExpense = "";
-    String description = "";
+    String totalExpense;
+    String description;
     @When("I click on the claim button")
     public void clickOnClaimButton() throws InterruptedException
     {
@@ -27,7 +28,6 @@ public class ClaimSteps
     {
         Assertions.assertTrue(claimPage.isPageClaim());
     }
-
     @When("I click on submit claim button")
     public void clickOnSubmitButton() throws InterruptedException
     {
@@ -39,14 +39,12 @@ public class ClaimSteps
     {
         Assertions.assertTrue(claimPage.isTextBoxCreateClaimDisplayed());
     }
-
     @When("I select the event {string} for the claim")
     public void selectEventForClaim(String event) throws InterruptedException
     {
-        claimPage.selectUserEvent(event);
+        claimPage.selectUserEventWithRetry(event);
         Thread.sleep(1000);
     }
-
     @When("I select the currency {string} for the claim")
     public void selectCurrencyForClaim(String currency) throws InterruptedException
     {
@@ -66,7 +64,6 @@ public class ClaimSteps
         claimPage.clickOnCreateButton();
         Thread.sleep(1000);
     }
-
     @Then("I must be in the add expenses page")
     public void isAddExpensesPageDisplayed()
     {
@@ -75,14 +72,13 @@ public class ClaimSteps
     @When("I click on Add Expense")
     public void clickOnAddExpense() throws InterruptedException
     {
-        Thread.sleep(1000);
         claimPage.clickOnAddExpenses();
         Thread.sleep(1000);
     }
     @And("I select the expense type as {string}")
     public void selectExpenseType(String type) throws InterruptedException
     {
-        claimPage.selectExpense(type);
+        claimPage.selectExpenseWithRetry(type);
         Thread.sleep(1000);
     }
     @And("I select the date as today")
@@ -125,7 +121,6 @@ public class ClaimSteps
 
     @When("I save my claim information and total expense")
     public void infoOfClaim() throws InterruptedException {
-        Thread.sleep(1000);
         information = claimPage.getInformationOfClaim();
         totalExpense = claimPage.getTotalExpense();
     }
@@ -145,17 +140,6 @@ public class ClaimSteps
                 "Submitted",
                 totalExpense
         };
-
-        System.out.println(
-                information.get(1) + " " +
-                        information.get(2) + " " +
-                        description + " " +
-                        information.get(4) + " " +
-                        formattedDate + " " +
-                        "Submitted" + " " +
-                        totalExpense
-        );
-
         Assertions.assertTrue(claimPage.isClaimRecorded(valuesToMatch));
         Thread.sleep(1000);
     }

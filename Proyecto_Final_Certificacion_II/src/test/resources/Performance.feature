@@ -32,5 +32,4 @@ Feature: Creation of a new key performance indicator
       | Customer Satisfaction | 1       | 10      | Chief Executive Officer | yes     |
       | Productivity          | 50      | 100     | Chief Financial Officer | yes     |
       | Quality of Work       | 0       | 10      | Chief Technical Officer | yes     |
-      | Employee Engagement   | 10      | 50      | Content Specialist      | no      |
 

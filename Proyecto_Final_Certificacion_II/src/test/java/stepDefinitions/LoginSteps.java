@@ -22,9 +22,8 @@ public class LoginSteps
         loginPage.setPasswordTextBox(password);
     }
     @When("I click on the login button")
-    public void clickOnLoginButton() throws InterruptedException
+    public void clickOnLoginButton()
     {
-        Thread.sleep(2000);
         loginPage.clickOnLoginButton();
     }
     @Then("I must be back in the Login Page")

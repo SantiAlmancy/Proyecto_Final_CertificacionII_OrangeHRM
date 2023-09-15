@@ -11,12 +11,12 @@ import utilities.DriverManager;
 
 public class PerformanceSteps
 {
+    // LOS THREAD SLEEPS SON PARA VER MEJOR EL PROCESO DE LOS TESTCASES Y LOS VIDEOS
     PerformancePage performancePage = new PerformancePage(DriverManager.getDriver().driver);
-    String performance = "";
-    String jobTitle = "";
-    String minRate = "";
-    String maxRate = "";
-    String scale = "";
+    String performance;
+    String jobTitle;
+    String minRate;
+    String maxRate;
     @When("I click on the performance button")
     public void clickOnPerformanceButton() throws InterruptedException
     {
@@ -88,13 +88,11 @@ public class PerformanceSteps
         if (x.equals("yes"))
         {
             performancePage.clickOnButtonToggleDefaultScale();
-            scale = "Yes";
             Thread.sleep(1000);
         }
     }
     @And("I click on the save KPI button")
-    public void clickOnSaveKPIButton()
-    {
+    public void clickOnSaveKPIButton() throws InterruptedException {
         performancePage.clickOnButtonSaveKPI();
     }
     @Then("The new created KPI must haven been recorded")
@@ -105,7 +103,6 @@ public class PerformanceSteps
                 jobTitle,
                 minRate,
                 maxRate,
-                scale
         };
         Assertions.assertTrue(performancePage.isKPIRecorded(valuesToMatch));
         Thread.sleep(1000);

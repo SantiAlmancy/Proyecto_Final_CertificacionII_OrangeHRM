@@ -10,9 +10,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverManager;
 
+import java.sql.Time;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ClaimPage
 {
@@ -39,11 +41,6 @@ public class ClaimPage
             @FindBy(css = ".oxd-input.oxd-input--active")
     })
     List<WebElement> claimInformation;
-
-    @FindBys({
-            @FindBy(css = "button[class='oxd-button oxd-button--medium oxd-button--text']")
-    })
-    List<WebElement> AddExpensesAndAttachments;
     @FindBy(css = "i[class='oxd-icon bi-calendar oxd-date-input-icon']")
     WebElement calendarIcon;
     @FindBy(css = "button[type='submit']")
@@ -72,24 +69,8 @@ public class ClaimPage
     {
         menuButtons.get(1).click();
     }
-    public void selectUserEvent(String event) {
-        WebElement listDownButton = listDownButtons.get(0);
-        listDownButton.click();
-
-        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
-
-        List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
-
-        switch (event) {
-            case "Accommodation" -> options.get(1).click();
-            case "Medical Reimbursement" -> options.get(2).click();
-            case "Travel Allowance" -> options.get(3).click();
-            default -> {
-            }
-        }
-    }
-
-    public void selectCurrency(String currency) {
+    public void selectCurrency(String currency)
+    {
         WebElement listDownButton = listDownButtons.get(1);
         listDownButton.click();
 
@@ -119,10 +100,15 @@ public class ClaimPage
     }
     public boolean isSubmitClaimButtonDisplayed()
     {
-        return submitClaimButton.isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = driver.findElement(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-sm-button']"));
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+        return element.isDisplayed();
     }
-    public List<String> getInformationOfClaim()
+    public List<String> getInformationOfClaim() throws InterruptedException
     {
+        Thread.sleep(1000); //Servidor necesita esperar para cargar información
         List<String> info = new ArrayList<>();
         for ( WebElement element : claimInformation)
         {
@@ -136,23 +122,15 @@ public class ClaimPage
     {
         WebElement addExpense = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--text'][data-v-0faf90dd]")));
-        addExpense.click();
-    }
-
-    public void selectExpense(String expense) {
-        WebElement listDownButton = listDownButtons.get(0);
-        listDownButton.click();
-
-        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
-
-        List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
-
-        switch (expense) {
-            case "Accommodation" -> options.get(1).click();
-            case "Fuel Allowance" -> options.get(2).click();
-            case "Planned Surgery" -> options.get(3).click();
-            case "Transport" -> options.get(4).click();
-            default -> {
+        boolean isClicked = false;
+        int attempts = 0;
+        while (!isClicked && attempts < 25)
+        {
+            try {
+                addExpense.click();
+                isClicked = true;
+            } catch (Exception e) {
+                attempts++;
             }
         }
     }
@@ -179,11 +157,21 @@ public class ClaimPage
     {
         buttonSubmitExpense.click();
     }
-    public void clickOnSubmitClaimButton() throws InterruptedException {
-        Thread.sleep(3500);
+    public void clickOnSubmitClaimButton()
+    {
         WebElement submitClaimButton = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-sm-button']")));
-        submitClaimButton.click();
+        boolean isClicked = false;
+        int attempts = 0;
+        while (!isClicked && attempts < 35)
+        {
+            try {
+                submitClaimButton.click();
+                isClicked = true;
+            } catch (Exception e) {
+                attempts++;
+            }
+        }
     }
     public String getTotalExpense()
     {
@@ -191,8 +179,8 @@ public class ClaimPage
         String paragraphText = paragraphElement.getText();
         return paragraphText.replaceAll("[^0-9.]+", "");
     }
-    public boolean isClaimRecorded(String[] valuesToMatch)
-    {
+    public boolean isClaimRecorded(String[] valuesToMatch) throws InterruptedException {
+        Thread.sleep(2000); //Servidor necesita esperar para cargar información
         List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-0d5ef602]"));
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.cssSelector(".oxd-table-cell"));
@@ -208,10 +196,8 @@ public class ClaimPage
                 {
                     return true;
                 }
-                System.out.println(cell.getText().trim());
                 i ++;
             }
-            System.out.println("------------");
         }
         return false;
     }
@@ -219,5 +205,55 @@ public class ClaimPage
     public void clickOnMyClaims()
     {
         myClaimsButton.click();
+    }
+    private void retryAction(Runnable action, int maxRetries)
+    {
+        for (int retry = 0; retry < maxRetries; retry++)
+        {
+            try
+            {
+                action.run();
+                return;
+            } catch (Exception e)
+            {
+                // ERROR
+            }
+        }
+        throw new RuntimeException("ERROR.");
+    }
+    public void selectUserEventWithRetry(String event) throws InterruptedException
+    {
+        WebElement listDownButton = listDownButtons.get(0);
+        retryAction(listDownButton::click, 10);
+        Thread.sleep(1000); //Servidor necesita esperar para cargar información
+        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
+
+        List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
+
+        switch (event) {
+            case "Accommodation" -> retryAction(() -> options.get(1).click(), 10);
+            case "Medical Reimbursement" -> retryAction(() -> options.get(2).click(), 10);
+            case "Travel Allowance" -> retryAction(() -> options.get(3).click(), 10);
+            default -> {
+            }
+        }
+    }
+    public void selectExpenseWithRetry(String expense) throws InterruptedException
+    {
+        WebElement listDownButton = listDownButtons.get(0);
+        retryAction(listDownButton::click, 10);
+        Thread.sleep(1000); //Servidor necesita esperar para cargar información
+        WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
+
+        List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
+
+        switch (expense) {
+            case "Accommodation" -> retryAction(() -> options.get(1).click(), 10);
+            case "Fuel Allowance" -> retryAction(() -> options.get(2).click(), 10);
+            case "Planned Surgery" -> retryAction(() -> options.get(3).click(), 10);
+            case "Transport" -> retryAction(() -> options.get(4).click(), 10);
+            default -> {
+            }
+        }
     }
 }

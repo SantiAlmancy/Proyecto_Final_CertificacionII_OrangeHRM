@@ -72,8 +72,9 @@ public class RecruitmentPage
     {
         buttonDisplayJobTitles.click();
     }
-    public void selectJobTitle(String job)
+    public void selectJobTitle(String job) throws InterruptedException
     {
+        Thread.sleep(1000);
         WebElement listBox = driver.findElement(By.cssSelector("div[role='listbox']"));
 
         List<WebElement> options = listBox.findElements(By.cssSelector("div[role='option']"));
@@ -94,7 +95,8 @@ public class RecruitmentPage
     {
         textBoxDescription.sendKeys(description);
     }
-    public String setHiringManager(String manager) throws InterruptedException {
+    public void setHiringManager(String manager) throws InterruptedException
+    {
         WebElement autocompleteWrapper = driver.findElement(By.cssSelector("div.oxd-autocomplete-wrapper"));
         WebElement textBox = autocompleteWrapper.findElement(By.cssSelector("input[data-v-75e744cd]"));
         textBox.sendKeys(manager);
@@ -102,7 +104,6 @@ public class RecruitmentPage
         WebElement firstOption = autocompleteWrapper.findElement(By.cssSelector("div.oxd-autocomplete-option"));
         String managerName = firstOption.getText();
         firstOption.click();
-        return managerName;
     }
     public void clickOnToggleButtonActive()
     {
@@ -112,31 +113,29 @@ public class RecruitmentPage
     {
         toggleButtons.get(toggleButtons.size() - 1).click();
     }
-    public void clickOnButtonSubmitVacancy()
+    public void clickOnButtonSubmitVacancy() throws InterruptedException
     {
         buttonSubmitVacancy.click();
+        Thread.sleep(1000); //Servidor necesita esperar para guardar información
     }
-    public boolean isVacancyRecorded(String[] valuesToMatch)
+    public boolean isVacancyRecorded(String valueToMatch) throws InterruptedException
     {
+        Thread.sleep(3000); //Servidor necesita esperar para cargar información
         List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-row[data-v-f2168256]"));
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.cssSelector(".oxd-table-cell"));
             cells.remove(0);
-            int i = 0;
             for (WebElement cell : cells)
             {
-                System.out.println(cell.getText().trim());
                 String value = cell.getText().trim();
-                if (i!=1 && i!=2 && !value.equals(valuesToMatch[i]))
+                if (!value.equals(valueToMatch))
                 {
                     break;
                 }
-                if (i == 3)
+                else
                 {
                     return true;
                 }
-                System.out.println(cell.getText().trim());
-                i ++;
             }
         }
         return false;

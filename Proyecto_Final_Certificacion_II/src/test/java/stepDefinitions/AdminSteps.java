@@ -12,7 +12,7 @@ import utilities.DriverManager;
 public class AdminSteps
 {
     AdminPage adminPage = new AdminPage(DriverManager.getDriver().driver);
-
+    // LOS THREAD SLEEPS SON PARA VER MEJOR EL PROCESO DE LOS TESTCASES Y LOS VIDEOS
     @When("I click on the admin button")
     public void clickOnAdminButton() throws InterruptedException
     {
@@ -23,14 +23,12 @@ public class AdminSteps
     {
         Assertions.assertTrue(adminPage.isButtonUserManagementDisplayed());
     }
-
     @When("I click on the new user button")
     public void clickOnAddUserButton() throws InterruptedException
     {
         adminPage.clickButtonAddNewUser();
         Thread.sleep(1000);
     }
-
     @When("I click on the User Management button")
     public void clickOnManagementButton() throws InterruptedException
     {
@@ -43,7 +41,6 @@ public class AdminSteps
         adminPage.clickButtonUsers();
         Thread.sleep(1000);
     }
-
     @Then("I must be in System Users")
     public void isSystemUsersDisplayed()
     {
@@ -55,7 +52,8 @@ public class AdminSteps
         Assertions.assertTrue(adminPage.isAddUserTextVisible());
     }
     @When("I set the username in form field with {string}")
-    public void setUserNameInForm(String Username) throws InterruptedException {
+    public void setUserNameInForm(String Username) throws InterruptedException
+    {
         adminPage.setUserNameTextBox(Username);
         Thread.sleep(1000);
     }
@@ -74,7 +72,6 @@ public class AdminSteps
         adminPage.selectUserRole(role);
         Thread.sleep(1000);
     }
-
     @And("I set the status in form with {string}")
     public void setStatusInForm(String status) throws InterruptedException {
         adminPage.selectStatus(status);
@@ -83,16 +80,15 @@ public class AdminSteps
     @And("I set the employee whose name starts with {string}")
     public void setEmployeeName(String firstLetter) throws InterruptedException
     {
-        adminPage.fillEmployee(firstLetter);
+        adminPage.fillEmployeeWithRetry(firstLetter);
         Thread.sleep(1000);
     }
-
     @When("I click on the save button")
-    public void saveButtonClick() throws InterruptedException {
+    public void saveButtonClick() throws InterruptedException
+    {
         adminPage.clickButtonSave();
         Thread.sleep(1000);
     }
-
     @Then("The user of username {string} from employee must be created")
     public void isUserCreated(String user) throws InterruptedException
     {
