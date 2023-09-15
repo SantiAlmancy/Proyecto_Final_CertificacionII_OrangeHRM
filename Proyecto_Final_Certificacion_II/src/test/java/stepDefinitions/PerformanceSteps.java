@@ -88,7 +88,7 @@ public class PerformanceSteps
         if (x.equals("yes"))
         {
             performancePage.clickOnButtonToggleDefaultScale();
-            scale = x;
+            scale = "Yes";
             Thread.sleep(1000);
         }
     }

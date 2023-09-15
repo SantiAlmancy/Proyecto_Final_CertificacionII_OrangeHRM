@@ -27,5 +27,9 @@ public class LoginSteps
         Thread.sleep(2000);
         loginPage.clickOnLoginButton();
     }
-
+    @Then("I must be back in the Login Page")
+    public void isLoginPageDisplayed()
+    {
+        Assertions.assertTrue(loginPage.isLoginPageDisplayed());
+    }
 }

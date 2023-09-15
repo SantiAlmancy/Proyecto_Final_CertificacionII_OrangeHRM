@@ -114,7 +114,6 @@ public class ClaimSteps
     @And("I click on submit claim")
     public void clickOnSubmitClaim() throws InterruptedException
     {
-        Thread.sleep(2000);
         claimPage.clickOnSubmitClaimButton();
         Thread.sleep(1000);
     }

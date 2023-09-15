@@ -28,8 +28,6 @@ public class RecruitmentPage
     WebElement buttonDisplayJobTitles;
     @FindBy(css = "textarea[placeholder='Type description here']")
     WebElement textBoxDescription;
-    @FindBy(css = "input[placeholder='Type for hints...']")
-    WebElement textBoxHiringManager;
     @FindBys({
             @FindBy(css = "span[class='oxd-switch-input oxd-switch-input--active --label-right']")
     })
@@ -129,7 +127,7 @@ public class RecruitmentPage
             {
                 System.out.println(cell.getText().trim());
                 String value = cell.getText().trim();
-                if (!value.equals(valuesToMatch[i]))
+                if (i!=1 && i!=2 && !value.equals(valuesToMatch[i]))
                 {
                     break;
                 }

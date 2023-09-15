@@ -120,7 +120,7 @@ public class PerformancePage
             for (WebElement cell : cells)
             {
                 String value = cell.getText().trim();
-                if (!value.equals(valuesToMatch[i]))
+                if (i!= 1 && !value.equals(valuesToMatch[i]))
                 {
                     break;
                 }

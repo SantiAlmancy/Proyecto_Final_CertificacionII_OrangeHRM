@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.DriverManager;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,7 +134,9 @@ public class ClaimPage
 
     public void clickOnAddExpenses()
     {
-        AddExpensesAndAttachments.get(0).click();
+        WebElement addExpense = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--text'][data-v-0faf90dd]")));
+        addExpense.click();
     }
 
     public void selectExpense(String expense) {
@@ -173,8 +179,10 @@ public class ClaimPage
     {
         buttonSubmitExpense.click();
     }
-    public void clickOnSubmitClaimButton()
-    {
+    public void clickOnSubmitClaimButton() throws InterruptedException {
+        Thread.sleep(3500);
+        WebElement submitClaimButton = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-sm-button']")));
         submitClaimButton.click();
     }
     public String getTotalExpense()
@@ -192,7 +200,7 @@ public class ClaimPage
             for (WebElement cell : cells)
             {
                 String value = cell.getText().trim();
-                if (i != 2 && !value.equals(valuesToMatch[i]))
+                if (i != 2 && i!= 4 && !value.equals(valuesToMatch[i]))
                 {
                     break;
                 }

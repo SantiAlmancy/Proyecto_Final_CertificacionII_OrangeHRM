@@ -24,6 +24,9 @@ Feature: Creation of a new user
     And I set the employee whose name starts with "<employee>"
     When I click on the save button
     Then The user of username "<username>" from employee must be created
+    Given I click on the profile toggle button
+    And I click on the logout button
+    Then I must be back in the Login Page
     Examples:
       | role  | employee | status   | username |
       | Admin | A        | Enabled  | Admin1   |

@@ -23,6 +23,9 @@ Feature: Creation of a new key performance indicator
     And I set the default scale: "<default>"
     And I click on the save KPI button
     Then The new created KPI must haven been recorded
+    Given I click on the profile toggle button
+    And I click on the logout button
+    Then I must be back in the Login Page
     Examples:
       | indicator             | minimum | maximum | job                     | default |
       | Sales Revenue         | 0       | 100     | Account Assistant       | no      |

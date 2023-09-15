@@ -26,6 +26,9 @@ Feature: Creation of a new vacancy
     When I click on the recruitment button
     When I click on the vacancies button
     Then The new created vacancy must have been recorded
+    Given I click on the profile toggle button
+    And I click on the logout button
+    Then I must be back in the Login Page
     Examples:
       | vacancy                   | position | job                     | active  |  publish | manager | description                                                                                                           |
       | Junior Account Assistant  | 3        | Account Assistant       | no      |  no      | A       | We are seeking a highly motivated and detail-oriented Junior Account Assistant to join our finance team.              |

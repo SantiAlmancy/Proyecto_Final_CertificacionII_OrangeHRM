@@ -1,21 +1,20 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.DriverManager;
 
-import java.time.Duration;
 
 public class DashboardPage
 {
     WebDriver driver;
     @FindBy(className = "oxd-userdropdown-tab")
     WebElement dropDownUser;
+    @FindBy(css = "i[class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")
+    WebElement buttonUserDropDown;
+    @FindBy(css = "a[href='/web/index.php/auth/logout']")
+    WebElement buttonLogout;
     public DashboardPage(WebDriver driver)
     {
         this.driver = driver;
@@ -24,8 +23,15 @@ public class DashboardPage
 
     public boolean isDropDownUserVisible()
     {
-        //WebElement dropDownUser = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
-              //  .until(ExpectedConditions.elementToBeClickable(By.className("oxd-userdropdown-tab")));
         return dropDownUser.isDisplayed();
+    }
+    public void clickOnUserDropdown()
+    {
+        buttonUserDropDown.click();
+    }
+
+    public void clickOnLogout()
+    {
+        buttonLogout.click();
     }
 }

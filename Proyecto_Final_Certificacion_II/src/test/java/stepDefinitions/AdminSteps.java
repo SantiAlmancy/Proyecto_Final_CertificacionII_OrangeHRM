@@ -16,7 +16,6 @@ public class AdminSteps
     @When("I click on the admin button")
     public void clickOnAdminButton() throws InterruptedException
     {
-        Thread.sleep(1000);
         adminPage.clickButtonAdmin();
     }
     @Then("I must be in the Admin Page")

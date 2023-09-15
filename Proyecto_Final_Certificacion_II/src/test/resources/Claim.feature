@@ -36,6 +36,9 @@ Feature: Claim submit
     When I save my claim information and total expense
     And I click on my claims button
     Then The claim information and total expense must be correct
+    Given I click on the profile toggle button
+    And I click on the logout button
+    Then I must be back in the Login Page
     Examples:
       | event                 | currency            | remarks                                                 | type            | expense | note                              | type2             | expense2  | note2                             |
       | Accommodation         | Afghanistan Afghani | I need the claim for my accommodation as I'm new here   | Accommodation   | 24      | Was a need                        | Planned Surgery   | 23        | Had to get attended               |

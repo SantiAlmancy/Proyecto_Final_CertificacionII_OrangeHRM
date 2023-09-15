@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.Assertions;
 import pages.DashboardPage;
@@ -13,5 +15,16 @@ public class DashboardSteps
     public void verifyDashBoardIsDisplayed()
     {
         Assertions.assertTrue(dashboardPage.isDropDownUserVisible());
+    }
+
+    @Given("I click on the profile toggle button")
+    public void clickOnToggleProfileButton()
+    {
+        dashboardPage.clickOnUserDropdown();
+    }
+    @And("I click on the logout button")
+    public void clickOnLogoutButton()
+    {
+        dashboardPage.clickOnLogout();
     }
 }
