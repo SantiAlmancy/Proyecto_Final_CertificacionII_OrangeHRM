@@ -1,6 +1,6 @@
 Feature: Claim submit
 
-  Background: User login into Orange HRM
+  Background: Verify the creation of a new claim and logout
     Given I am in Orange HRM web page
 
   @submitAClaim
